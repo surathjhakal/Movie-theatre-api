@@ -7,6 +7,8 @@ from django.shortcuts import render
 # Create your views here.
 MAX_OCCUPANCY = settings.MAX_OCCUPANCY
 
+print(User.objects.all().exists())
+
 
 def index(request):
     print(User.objects.all())
@@ -17,7 +19,9 @@ def occupy(request, name, ticket_id):
     if User.objects.all().exists():
         userObjectsLen = len(User.objects.all())
         if MAX_OCCUPANCY >= userObjectsLen:
-            f = User.objects.values('seat_no')
+            sortedForm = User.objects.order_by('seat_no')
+            f = sortedForm.values('seat_no')
+            print(f)
             j = 1
             for i in f:
                 if i['seat_no'] != j:
@@ -31,3 +35,14 @@ def occupy(request, name, ticket_id):
         user = User(name=name, ticket_id=ticket_id, seat_no=1)
         user.save()
         return HttpResponse(f"Hello {name}, your seat no. is 1")
+
+
+def vacate(request, seat_no):
+    if User.objects.all().exists():
+        seatNo = User.objects.filter(seat_no=seat_no)
+        if seatNo:
+            seatNo.delete()
+            return HttpResponse("You have vacate that seat, thank you")
+        return HttpResponse("There was no user on that seat, first to to occupy a seat")
+    else:
+        return HttpResponse("You can't vacate because you are not a user")
