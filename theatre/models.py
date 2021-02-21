@@ -9,4 +9,4 @@ class User(models.Model):
     seat_no = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"{self.name}  -  ticket id: {self.ticket_id}"
+        return f"||    Name : {self.name}    ||    Ticket ID : {self.ticket_id}    ||    Seat No : {self.seat_no}   || 😃😃😃"

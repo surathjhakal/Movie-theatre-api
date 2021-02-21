@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # For specifing the size of theatre capacity
-MAX_OCCUPANCY = 20
+MAX_OCCUPANCY = 5
 
 # Application definition
 
