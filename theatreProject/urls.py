@@ -20,6 +20,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # I have created a seperate url patterns for the theatre app
     path('theatre/', include('theatre.urls')),
     path('', views.index, name="index")
 ]

@@ -1,8 +1,6 @@
 from django.conf import settings
-from django.db.models.manager import Manager
-from django.urls.base import reverse
 from .models import User
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.http.response import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
